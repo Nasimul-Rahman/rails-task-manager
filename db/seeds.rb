@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+puts "destroying data"
+Task.destroy_all
+puts "creating data"
+15.times do
+  task = Task.create(title: Faker::Games::Minecraft.achievement, details: Faker::Games::LeagueOfLegends.summoner_spell)
+  puts "#{task.title} created"
+  sleep(1)
+end
+
+puts "#{Task.count} restaurants created"
